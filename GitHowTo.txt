@@ -1,0 +1,285 @@
+1. Git credentials
+
+1) Set Username and email adress
+git config --global user.name "Your Name"
+git config --global user.email "your_email@whatever.com"
+
+2) Default branch name
+git config --global init.defaultBranch main
+
+3) Line endings treatment  [For Windows]
+git config --global core.autocrlf true
+git config --global core.safecrlf warn
+
+
+2. Creating a project
+
+1) Create a “Hello, World!” page
+mkdir work
+cd work
+touch hello.html
+
+2) Create a repository
+git init
+
+3) Add the page to the repository
+git add hello.html
+git commit -m "Initial Commit"
+
+
+3. Checking the status of the repository
+
+1) Check the status of the repository 
+git status
+
+
+4. Making changes
+
+1) Changing the “Hello, World” page
+<h1>Hello, World!</h1>
+
+2) Checking the status
+git status
+
+
+5. Staging the changes
+
+1) Adding changes
+git add hello.html
+git status
+
+
+6. Staging and committing
+
+git add a.html
+git add b.html
+git commit -m "Changes for a and b"
+git add c.html
+git commit -m "Unrelated change to c"
+
+7. Committing the changes
+
+1) Committing changes [git commit]
+2) Checking the status [git status]
+
+
+8. Changes, not files
+
+1) First Change: Adding default page tags   
+<html>
+  <body>
+    <h1>Hello, World!</h1>
+  </body>
+</html>
+
+2) Add this change
+git add hello.html
+
+3) Second change: Add the HTML headers
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>Hello, World!</h1>
+  </body>
+</html>
+
+4) Check the current status [git status]
+
+5) Commit
+git commit -m "Added standard HTML page tags"
+git status
+
+6) Adding the second change
+git add .
+git status
+
+7) Commit the second change
+git commit -m "Added HTML header"
+
+
+9. Git History — Short Guide
+1)  View History
+git log
+Shows the list of all commits (hash, author, date, message).
+
+2) One-Line History
+git log --oneline
+Example:
+b7614c1 Added HTML header  
+46afaff Added standard HTML page tags
+
+3) Filter History
+git log --oneline --max-count=2         # last 2 commits  
+git log --oneline --since="5 minutes ago" # commits after time  
+git log --oneline --until="5 minutes ago" # commits before time  
+git log --oneline --author="Your Name"    # commits by author  
+git log --oneline --all                   # all branches history
+
+4)  Custom Output
+Last week:
+git log --all --pretty=format:"%h %cd %s (%an)" --since="7 days ago"
+
+More detailed format:
+git log --pretty=format:"%h %ad | %s%d [%an]" --date=short
+Breakdown:
+%h — short hash
+%ad — date
+%s — commit message
+%d — branch/tags decorations
+%an — author
+
+5) Set as Default
+To avoid typing every time:
+git config --global format.pretty '%h %ad | %s%d [%an]'
+git config --global log.date short
+
+6) GUI Tools
+gitx (Mac)
+gitk (any OS)
+
+
+10. Getting Older Versions — Short Guide
+
+1) Find Commit Hashes
+Show all commits:
+git log
+
+Example output:
+b7614c1 Added HTML header (HEAD -> main)
+46afaff Added standard HTML page tags
+78433de Added h1 tag
+5836970 Initial commit
+Copy the hash (first 7 characters are enough, e.g. 5836970).
+
+2) Check Out an Older Commit
+git checkout <hash>
+cat hello.html
+
+Example:
+git checkout 5836970
+cat hello.html
+You’ll see the file content from that commit.
+(This puts you in detached HEAD state — you’re no longer on a branch.)
+
+3) Create a Branch from That Commit (Optional)
+If you want to keep changes:
+git switch -c <new-branch-name>
+
+4) Return to the Latest Version (main branch)
+git switch main
+cat hello.html
+Now you’re back on the main branch with the latest code.
+
+
+11. Tagging Versions — Short Guide
+1) Create a Tag for the Current Commit
+git tag v1
+git log
+Now the current commit is labeled v1.
+
+2) Tag a Previous Version
+Check out the commit before v1:
+git checkout v1^   # or git checkout v1~1
+cat hello.html
+
+Then tag it:
+git tag v1-beta
+git log
+Now the previous commit is labeled v1-beta.
+
+3) Check Out by Tag Name
+Switch between tagged versions easily:
+
+git checkout v1
+git checkout v1-beta
+
+4) View All Tags
+git tag
+Example output:
+v1  
+v1-beta
+
+5) View Tags in the Log
+git log main --all
+
+You’ll see commits with tags, e.g.:
+b7614c1 Added HTML header (tag: v1, main)
+46afaff Added standard HTML page tags (tag: v1-beta)
+
+
+12. Discarding Local Changes (Before Staging) — Short Guide
+
+1) Switch to the Main Branch
+Make sure you’re on the latest commit of main:
+git switch main
+
+2) Make a Local Change (Example)
+Add an unwanted comment to hello.html:
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>Hello, World!</h1>
+    <!-- This is a bad comment. We want to revert it. -->
+  </body>
+</html>
+
+3) Check the Status
+git status
+Output example:
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+    modified:   hello.html
+We see the file is modified but not staged.
+
+4) Undo the Changes in the Working Directory
+Reset the file back to the committed version:
+git restore hello.html
+git status
+cat hello.html
+
+Result:
+On branch main
+nothing to commit, working tree clean
+hello.html content is back to the committed state.
+
+
+13. Cancel Staged Changes (Before Committing) — Short Guide
+
+1) Edit the File and Stage Changes
+Make an unwanted change in hello.html:
+<html>
+  <head>
+    <!-- This is an unwanted but staged comment -->
+  </head>
+  <body>
+    <h1>Hello, World!</h1>
+  </body>
+</html>
+
+Stage the file:
+git add hello.html
+
+2) Check the Status
+git status
+
+Example output:
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+    modified: hello.html
+The change is staged and ready to commit.
+
+3) Unstage the File (Keep Changes in Working Directory)
+git restore --staged hello.html
+This removes the file from staging but keeps the changes in your working directory.
+
+4) Restore the Working Directory (Discard Changes)
+git restore hello.html
+git status
+Result:
+On branch main
+nothing to commit, working tree clean
+
+hello.html returns to the last committed state.

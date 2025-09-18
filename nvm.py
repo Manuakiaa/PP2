@@ -9,9 +9,8 @@ for i in range(1,A):
     for j in range(0,i+1):
         if B[i] > B[j]:
             C[i] = B[j]
-            
-for i in range(0, A):
-    print(C[i], " ")
+          
+print(*C)
 
 
 #5
