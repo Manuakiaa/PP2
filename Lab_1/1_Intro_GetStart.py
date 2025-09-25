@@ -10,5 +10,4 @@ print(sys.version)
 exit()
 
 #To check if you have python installed on a Linux or Mac, then on linux open the command line or on Mac open the Terminal and type:
-
 python --version

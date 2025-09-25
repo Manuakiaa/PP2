@@ -59,13 +59,33 @@
         
         
 # E
-a = int(input())
-b = []
-for i in range(a):
-    b.append(str(input()))
-c = set(b)
-print(f"All in all: {len(c)}")
-print("Students:")
-for i in c:
-    print(i)
+# a = int(input())
+# b = []
+
+
+# for i in range(a):
+#     b.append(str(input()))
+# c = set(b)
+
+
+# print(f"All in all: {len(c)}")
+# print("Students:")
+# for i in c:
+#     print(i)
+
+
+
+A = int(input())
+B = list(map(int, input().split()))
+C = [-1] * A  
+
+for i in range(A):
+    for j in range(i - 1, -1, -1): 
+        if B[j] < B[i]:            
+            C[i] = B[j]
+            break                  
+print(*C)
+    
+    
+
     
