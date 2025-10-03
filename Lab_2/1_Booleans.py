@@ -18,7 +18,7 @@ else:
 #The bool() function allows you to evaluate any value, and give you True or False in return,
 
 #Evaluate a string and a number:
-print(bool("Hello"))
+print(bool("Hello"))   
 print(bool(15))
 
 #Evaluate two variables:
@@ -70,7 +70,7 @@ print(myFunction())
 def myFunction() :
   return True
 if myFunction():
-  print("YES!")
+  print("YES!") #YES
 else:
   print("NO!")
   

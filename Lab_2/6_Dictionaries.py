@@ -105,8 +105,8 @@ car = {
 }
 x = car.items()
 print(x) #before the change
-car["year"] = 2020
-print(x) #after the change
+car["year"] = 2020  
+print(x) #after the change  
 
 #Add a new item to the original dictionary, and see that the items list gets updated as well:
 car = {
