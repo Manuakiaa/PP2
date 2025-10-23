@@ -1,9 +1,8 @@
-import datetime
+import re
 
-today = datetime.date.today()
-end = datetime.date(today.year, 12, 31)
-left = (end - today).days
+patern = r"\d{11}"
 
-weeks = left // 7
+def task(text):
+    return re.findall(patern, text)
 
-print(f"{weeks} weeks left untill the end of the year")
+print(task("My phone numbers are 12345678901 and 10987654321 and 12345678910 not 123123 or 1231221"))
