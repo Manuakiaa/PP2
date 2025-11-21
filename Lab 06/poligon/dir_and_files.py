@@ -105,15 +105,14 @@ def task8(path):
     else:
         os.rmdir(path)
 
-
-path_lab6 = "Lab 06\\"
-path_poligon = "Lab 06\\poligon"
-path_this = "Lab 06\\dir_and_files.py"
-path_not_existing = "Not Existing"
-path_sample4 = "Lab 06\\poligon\\sample4.txt"
-path_sample5 = "Lab 06\\poligon\\sample5.txt"
-path_dump_files = "Lab 06\\poligon\\dump_files"
-path_dump_files_B = "Lab 06\\poligon\\dump_files\\B.txt"
+path_lab6 = "C:\\Users\\manua\\OneDrive\\Рабочий стол\\PP2_2025-2026\\Lab 06"
+path_poligon = "C:\\Users\\manua\\OneDrive\\Рабочий стол\\PP2_2025-2026\\Lab 06\\poligon"
+path_this = "C:\\Users\\manua\\OneDrive\\Рабочий стол\\PP2_2025-2026\\Lab 06\\dir_and_files.py"
+path_not_existing = "C:\\Not Existing" 
+path_sample4 = "C:\\Users\\manua\\OneDrive\\Рабочий стол\\PP2_2025-2026\\Lab 06\\poligon\\sample4.txt"
+path_sample5 = "C:\\Users\\manua\\OneDrive\\Рабочий стол\\PP2_2025-2026\\Lab 06\\poligon\\sample5.txt"
+path_dump_files = "C:\\Users\\manua\\OneDrive\\Рабочий стол\\PP2_2025-2026\\Lab 06\\poligon\\dump_files"
+path_dump_files_B = "C:\\Users\\manua\\OneDrive\\Рабочий стол\\PP2_2025-2026\\Lab 06\\poligon\\dump_files\\B.txt"
 
 print(task1(path_lab6))
 
